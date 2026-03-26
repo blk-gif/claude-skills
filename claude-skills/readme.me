@@ -1,0 +1,136 @@
+# claude-skills
+
+Custom Claude Code skills for SpinePay Pro and general development use.
+
+## Installation
+
+### Via skillfish (recommended)
+```bash
+npm i -g skillfish
+npx skillfish add blk-gif/claude-skills
+```
+
+### Manual install
+```bash
+git clone https://github.com/blk-gif/claude-skills ~/.claude/skills/blk-gif
+```
+
+### As Claude Code plugin marketplace
+```
+/plugin marketplace add blk-gif/claude-skills
+```
+
+---
+
+## Available Skills
+
+### `render-deployment`
+Deploy and manage applications on Render.com.
+
+**Triggers when:** user mentions Render, render.yaml, deploying to cloud, or hosting Node.js apps.
+
+**Covers:**
+- render.yaml Blueprint generation
+- PostgreSQL connection with SSL
+- Database migrations on startup
+- Health check endpoints
+- Environment variable setup
+- Session management
+- Common deployment errors and fixes
+- Free tier keep-alive patterns
+- Render MCP server setup
+
+**Install:**
+```
+/plugin install render-deployment@blk-gif/claude-skills
+```
+
+---
+
+### `node-express-api`
+Build production-grade Node.js REST APIs with Express and PostgreSQL.
+
+**Triggers when:** building backend servers, REST APIs, Express apps, or Node.js web services.
+
+**Covers:**
+- Project structure and organization
+- Auth middleware (requireAuth, requireAdmin)
+- HIPAA audit logging on all PHI endpoints
+- PostgreSQL parameterized query patterns
+- Input validation
+- Session timeout (30 min HIPAA requirement)
+- bcrypt password hashing
+- Consistent error response format
+- Anti-patterns to avoid
+
+**Install:**
+```
+/plugin install node-express-api@blk-gif/claude-skills
+```
+
+---
+
+### `hipaa-compliance`
+HIPAA technical safeguards checklist and PHI handling patterns.
+
+**Triggers when:** building or auditing any healthcare app or app that handles patient data.
+
+**Covers:**
+- What counts as PHI
+- Technical safeguard checklist
+- PHI violation patterns to scan for
+- Audit log table schema
+- Session security implementation
+- Backup requirements
+- BAA vendor checklist
+- Minimum necessary standard
+- Security headers
+
+**Install:**
+```
+/plugin install hipaa-compliance@blk-gif/claude-skills
+```
+
+---
+
+## Usage in Claude Code
+
+At the start of a session:
+```
+Read CLAUDE.md first. Use the render-deployment, node-express-api, and hipaa-compliance skills for this task.
+```
+
+Or reference specific skills inline:
+```
+Use the hipaa-compliance skill to audit this file for PHI violations.
+Use the render-deployment skill to generate a render.yaml for this Express app.
+```
+
+---
+
+## Adding to Your Project
+
+Add a `skillfish.json` to your project root:
+```json
+{
+  "version": 1,
+  "skills": [
+    "blk-gif/claude-skills/render-deployment",
+    "blk-gif/claude-skills/node-express-api",
+    "blk-gif/claude-skills/hipaa-compliance"
+  ]
+}
+```
+
+Then run `skillfish install` to sync.
+
+---
+
+## Project Context
+
+These skills were built for the **SpinePay Pro** project — a HIPAA-compliant practice management system for Walden Bailey Chiropractic, Buffalo NY.
+
+- Electron desktop app: `blk-gif/spinepay-pro`
+- Web version: `blk-gif/spinepay-pro-web`
+- Website: `blk-gif/walden-chiropractic-website`
+- Backend: `blk-gif/walden-chiropractic-backend`
